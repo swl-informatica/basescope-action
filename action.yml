@@ -1,0 +1,25 @@
+name: 'baseScope: resultados de testes'
+description: 'Envia à Base2 os números de cobertura e de teste de mutação do seu CI, sem código-fonte.'
+author: 'Base2'
+branding:
+  icon: 'check-circle'
+  color: 'green'
+inputs:
+  url:
+    description: 'Endereço de recebimento do baseScope (informado pela Base2).'
+    required: true
+  cobertura:
+    description: 'Relatórios de cobertura (LCOV, Cobertura ou JaCoCo), um caminho ou padrão por linha.'
+    required: false
+    default: ''
+  mutacao:
+    description: 'Relatórios de teste de mutação (Stryker JSON ou PIT XML), um caminho ou padrão por linha.'
+    required: false
+    default: ''
+  falhar-sem-relatorio:
+    description: 'Falha o passo quando nenhum relatório é encontrado (padrão: só avisa).'
+    required: false
+    default: 'false'
+runs:
+  using: 'node24'
+  main: 'dist/index.cjs'
